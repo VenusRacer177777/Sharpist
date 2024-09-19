@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content remains the same) ... -->
+</head>
+<body>
+    <!-- ... (body content remains the same until the script tag) ... -->
+
+    <script>
+        document.getElementById('dateSelectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            fetch('https://script.google.com/macros/s/AKfycbziX_AQXXpZN64tK9ngC5McklWP-1a94CDUKwfTBIOdv1ZC_3lO4Mja7rHe-a-xygQwPw/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('Thank you! Your start date has been recorded.');
+                this.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
